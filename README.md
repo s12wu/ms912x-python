@@ -5,9 +5,7 @@ This program is completely based on rhgndf's [ms912x](https://github.com/rhgndf/
 
 This is not a "driver" for the adapter, so you can't use it to display your desktop or anything like that.
 
-So far this ipynb notebook is just a weird collection of half-working code that I'm using to try and figure out how it works, I'm still working on it and hopefully a cleaner version will come out soon.
+The usb device behaves very strangely, it seems to disconnect itself on setup. For example, I wasn't able to reliably forward it to a virtual machine (to test the official driver under Windows and rhgdnf's driver [under Ubuntu 20.04](https://github.com/rhgndf/ms912x/issues/2#issuecomment-1707399179)).
 
-After plugging it in, I currently need to click "restart kernel and run all cells" three times until it works (I have no idea how USB is supposed to work)
-1. `USBError: [Errno 19] No such device (it may have been disconnected)` when calling power_on()
-2. `USBTimeoutError: [Errno 110] Operation timed out` when calling ep.write()
-3. On the third try, it magically works
+Because of this, this Python program does a series of `dev.reset()`s and repeats `usb.core.find`, for me it works pretty reliably like that.
+
