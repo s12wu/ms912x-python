@@ -9,3 +9,4 @@ The usb device behaves very strangely, it seems to disconnect itself on setup. F
 
 Because of this, this Python program does a series of `dev.reset()`s and repeats `usb.core.find`, for me it works pretty reliably like that.
 
+### [rhgndf/ms912x](https://github.com/rhgndf/ms912x) works just fine now, I'm not working on this any more
